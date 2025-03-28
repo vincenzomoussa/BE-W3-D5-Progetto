@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <!-- Questo file xml serve a logback per funzionare, ho cercato per un po' come funzionasse e mi sono imbattuto in w3school che spiegava in modo molto
+         chiaro il funzionamento di questo "plug-in", spero non sia ritenuto un errore.     -->
+
+    <!-- Hide logback own logs -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"/>
+
+    <!-- Format the log output -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- Set the application log level to INFO -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <!-- Set log level of Hibernate to WARN level -->
+    <logger name="org.hibernate">
+        <level value="WARN"/>
+    </logger>
+
+</configuration>
