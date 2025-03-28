@@ -1,0 +1,37 @@
+          (-Periodicità)   Riviste----------------------Elemento---------------------Libri  (-Autore  -Genere)
+                                              |          -id               |
+                                              |         -isbn PK           |
+                                              |         -titolo            |
+                                              |  -anno_di_pubblicazione    |
+                                              |      -numero_pagine        |
+                                              |                            |
+                                              |                            |---------------Prestiti
+                                              |                            |                -id PK
+                                              |                            |                -data_inizio_prestito
+                                              |                            |                -data_ipotetica_di_restituzione_(plus__30__days)
+                                              |                            |                -data_restituzione_effettiva
+                                              |                            |                -isbn_elemento_prestato
+                                              |                            |                -numero_tessera_utente-------------|
+                                              |                            |                                                   |
+                                                                                                                               |
+                                                                                                                               |
+                                                                                                                               |
+                                                                                                                               |-----Utenti
+                                                                                                                                 -numero_tessera PK
+                                                                                                                                 -nome
+                                                                                                                                 -cognome
+                                                                                                                                 -data_di_nascita
+
+ELEMENTO 1-------------------1 LIBRI
+Ogni libro è inequivocabilmente associato a un elemento tramite chiave primaria, quale l'ISBN
+
+ELEMENTO 1-------------------1 RIVISTE
+Ogni rivista è inequivocabilmente associata a un elemento, tramite chiave primaria, quale l'ISBN
+
+ELEMENTO 1-------------------1 PRESTITI
+Un prestito è associato a un solo elemento tramite ISBN, un prestito non può essere fatto da più elementi.
+
+PRESTITI M-------------------1 UTENTI
+Un utente puo' avere piu' prestiti, ma un prestito non puo' essere fatto da piu' utenti. Ovviamente i prestiti hanno una chiave primaria ID che li rende
+unici, quindi un utente può avere MOLTI prestiti, ma divisi ognuno per un elemento diverso.
+
